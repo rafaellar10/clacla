@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+
+    <title>Eu + Você = Nós</title>
+    <style>
+        /* Reset de estilos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Corpo */
+        body {
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Capa do Jornal */
+        .entrada {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #2d2d72, #9b1b30);
+            color: white;
+            padding: 30px;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Imagem principal (foto especial) */
+        .entrada img, .foto-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            animation: flutuar 3s infinite ease-in-out alternate;
+            }
+
+         
+        
+
+        /* Animação suave de flutuação da imagem */
+        @keyframes flutuar {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(8px);
+            }
+        }
+
+        /* Título principal */
+        .entrada h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+            border-bottom: 4px solid #fff;
+            padding-bottom: 10px;
+            letter-spacing: 1px;
+            width: 80%;
+            text-align: center;
+        }
+
+        /* Subtítulo */
+        .entrada p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-top: 15px;
+            opacity: 0.9;
+        }
+
+        /* Botão de entrada */
+        .btn-entrar {
+            background: linear-gradient(45deg, #f1b2b2, #9b1b30);
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 30px;
+            margin-top: 25px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            position: relative;
+            z-index: 20;
+        }
+
+        .btn-entrar:hover {
+            background: linear-gradient(45deg, #ff2f62, #ff6f72);
+            transform: scale(1.05);
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Corações flutuantes */
+        .corações {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .coração {
+            position: absolute;
+            bottom: -10px;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 190, 200, 0.7);
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: subir 8s infinite linear;
+        }
+
+        @keyframes subir {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Layout do conteúdo do jornal */
+        .conteudo {
+            background-color: #202021;
+            padding: 50px;
+            box-shadow: 0px 6px 15px rgba(9, 14, 61, 0.4);
+            border-radius: 20px;
+            margin-top: 60px;
+            max-width: 900px;
+            margin: 30px auto;
+            color: #f1f1f1;
+        }
+
+        .conteudo h2 {
+            font-size: 2.2rem;
+            color: #FF6B6B;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .foto-card {
+            background-color: #07081c;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .foto-card:hover {
+            transform: scale(1.05);
+        }
+
+        .foto-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .foto-card p {
+            font-size: 1rem;
+            color: #ccc;
+            text-align: justify;
+        }
+
+        /* Seção de Músicas */
+        .musicas, .parabens, .presente {
+            background-color: rgba(27, 26, 26, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(79, 76, 76, 0.5);
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            text-align: justify;
+        }
+
+        .musicas h3, .parabens h3, .presente h3 {
+            font-size: 1.2rem;
+            color: #FF6B6B;
+            margin-bottom: 15px;
+        }
+
+        .musicas ul {
+            list-style: none;
+            padding: 0;
+            color: #f1f1f1;
+        }
+
+        .musicas li, .presente p, .parabens p {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+       /* Footer */
+        footer {
+            background-color: #222222;
+            color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.7rem;
+            margin-top: 30px; /* Adiciona espaço acima do footer */
+        }
+
+/* Corpo */
+        body {
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+            text-align: center;
+            overflow-x: hidden;
+            padding-bottom: 10px; /* Adiciona espaço extra no fundo */
+        }
+
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .entrada h1 {
+                font-size: 2rem;
+            }
+            .entrada p {
+                font-size: 1.2rem;
+            }
+            .btn-entrar {
+                font-size: 1rem;
+                padding: 12px 30px;
+            }
+            .conteudo {
+                padding: 30px;
+            }
+            .musicas, .parabens, .presente {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js').then((registration) => {
+                    console.log('Service Worker registrado com sucesso:', registration);
+                }).catch((error) => {
+                    console.log('Falha ao registrar o Service Worker:', error);
+                });
+            });
+        }
+    </script>
+    
+    <!-- Capa do Jornal -->
+    <div class="entrada">
+        <img src="https://i.postimg.cc/TYQc2Snk/Imagem-do-Whats-App-de-2025-04-01-s-17-19-23-bef4b96a.jpg" alt="Imagem especial do amor" class="imagem-principal">
+        <h1>Dedicado a Você 💗</h1>
+        <p>Momo, tentei expressar um pouco do meu amor por você, espero que goste!</p>
+        <a href="#conteudo">
+            <button class="btn-entrar">Galeria</button>
+        </a>
+        <div class="corações"></div>
+    </div>
+
+    <!-- Conteúdo do Jornal -->
+    <div id="conteudo" class="conteudo">
+        <h2>Momentos especiais.💗</h2>
+        <div class="galeria">
+            <div class="foto-card">
+                <img src="https://i.postimg.cc/wj7hJ7Sz/Imagem-do-Whats-App-de-2025-04-01-s-17-37-23-bdadf93b.jpg" alt="foto 1">
+                <p>Amor, foi nesse momento que percebi que você não sairia da minha vida e que eu realmente te queria. 
+                Dizer tchau não seria tão fácil quanto eu pensava. Naquele dia, eu ainda não sabia o quanto iria te amar, 
+                mas a maneira como você me olhava já me fazia ficar completamente apaixonada por você.</p>
+            </div>    
+            <div class="foto-card">
+                <img src="https://i.postimg.cc/m2RSJLKf/Imagem-do-Whats-App-de-2025-04-01-s-17-42-56-cd281caa.jpg" alt="foto 2">
+                <p>Quando você chegou em Portugal, meu coração estava doendo e eu não conseguia parar de pensar em você. A todo momento, 
+                    você estava na minha cabeça, assim como agora enquanto escrevo isso. De verdade, amei que você estava juntinha da sua mamãe, 
+                    do Zequinha e da Bethânia, mas será que é egoísmo da minha parte não querer que você fique longe de mim nem por um segundo?</p>
+            </div>
+
+            <div class="foto-card">
+                <img src="https://i.postimg.cc/KvPQ9kzy/Imagem-do-Whats-App-de-2025-04-01-s-18-07-37-f4b23e7a.jpg" alt="foto ">
+                <p>Essa mensagem foi a melhor coisa que eu li! Eu já me sentia completamente boiola a você, já te via como minha namorada,
+                     meu mundo ficou mais feliz, meus momentos com você ficaram mais alegres e completos, eu te amo, e isso é tudo que importa!</p>
+            </div>
+
+            <div class="foto-card">
+                <img src="https://i.postimg.cc/52KTfQMF/Imagem-do-Whats-App-de-2025-04-01-s-17-57-43-a2b676ea.jpg" alt="foto 3">
+                <p>Lembra quando você estava na Itália e eu estava aqui, morrendo de ciúmes? Não vou entrar em detalhes, porque isso não importa entre nós. O que importa é que você me disse que me amava,
+                 no dia 15 de outubro, ainda na Itália. Eu já te amava há muito tempo, sempre tive cuidado ao falar de você ou me referir a você diretamente. 
+                Eu te amo, e te escolheria em qualquer lugar, em qualquer vida, e no meio da multidão! Você é minha, e eu sou sua.</p>
+            </div>
+
+            <div class="foto-card">
+                <img src="https://i.postimg.cc/c1t7c4gw/Imagem-do-Whats-App-de-2025-04-03-s-16-27-59-3151c067.jpg" alt="Foto 3">
+                <p>MOOO, a gente já tinha dormido juntinhas, dado beijinhos (sem estragar a boiolagem, cê sabe), eu fiquei apaixonada nessa noite, adorei tocar em você, 
+                te dar beijinhos e dormir agarradinha no seu cangote, sentindo o cheirinho do meu perfume favorito. Eu amo você de todas as formas!</p>
+            </div>
+
+            <div class="foto-card">
+                <img src="https://i.postimg.cc/CxgRkwkh/Imagem-do-Whats-App-de-2025-04-01-s-17-19-44-f94452e4.jpg" alt="Foto 3">
+                <p>Eu já posso te chamar de momo, né? Eu me apaixonei pela maneira como você me olha, pela sua vontade de saber tudo sobre mim, pela sua determinação em fazer dar certo.
+                    Quando você chegou correndo e me abraçou, eu soube que era você, amor! Eu tive certeza de que você era tudo o que eu queria para o resto da vida!
+                    E quando eu vi seus olhinhos brilhando, eu fiquei ainda mais convencida de que te amo e quero ser sua para sempre!</p>
+            </div>
+
+            <div class="foto-card">
+                <img src="https://i.postimg.cc/jjrqBcZR/Imagem-do-Whats-App-de-2025-04-01-s-17-20-51-c73ea286.jpg" alt="Foto 3">
+                <p>As duas mulheres da minha vida juntas, foi um momento de pura felicidade! Fiquei super feliz que minha mãe te amou à primeira vista e que você fez questão dela,
+                     isso significa tudo pra mim! Amo você, minha gatinha!! Eu sei o quanto gostar da família importa pra nós! </p>
+            </div>
+
+            <div class="foto-card">
+                <img src="https://i.postimg.cc/P5Vkh4tg/Imagem-do-Whats-App-de-2025-04-03-s-16-27-56-5c797567.jpg" alt="Foto 3">
+                <p>Mo, quando vi meus sobrinhos, especialmente a Rebeca (que não gosta de qualquer um), se apaixonarem por você, eu confesso que senti um tico de ciúmes, mas fiquei morrendo de amores e felicidade!
+                     Acho que crianças tendem a gostar de pessoas boas de alma, e é por isso que minha criança interior também se apaixonou por você!</p>
+            </div>
+
+            <div class="foto-card">
+                <img src="https://i.postimg.cc/zvDF7T9j/Imagem-do-Whats-App-de-2025-04-03-s-16-28-00-b2c940b9.jpg" alt="Foto 3">
+                <p>Eu te amo, mas ao mesmo tempo, te amo porque posso sentir que te amo. E o amor em si se dilui, se dissolve como o perfume que escapa da flor. Mas o que não se dissolve, 
+                    o que não escapa, são os detalhes que você me traz. Eu amo seus olhos, a forma como você me olha, com uma intensidade que nunca me deixa dúvidas. Sempre soube, lá no fundo, 
+                    que você é o meu para sempre.</p>
+            </div>
+
+            <div class="foto-card">
+                <img src="https://i.postimg.cc/bJs5gckr/Imagem-do-Whats-App-de-2025-04-03-s-16-28-00-a066e6f3.jpg" alt="Foto 3">
+                <p>Você é o começo; o meio e o fim de todos os meus sonhos. O amor da minha vida: ontem, hoje e para sempre.</p>
+            </div>
+
+            <div class="foto-card">
+                <img src="https://i.postimg.cc/CKNZN9Y3/Imagem-do-Whats-App-de-2025-04-03-s-16-28-00-e6294077.jpg" alt="Foto 3">
+                <p>Eu e você, garradinha em uma noite de terça!</p>
+            </div>
+
+            <div class="foto-card">
+                <img src="https://i.postimg.cc/XJm5Td2W/Imagem-do-Whats-App-de-2025-04-15-s-20-05-44-edc92530.jpg" alt="Foto 3">
+                <p>Meu mundo é mais bonito com você nele e comer sOshi fica mais legal e gostoso ao seu lado. Te amo!</p>
+            </div>
+
+            <div class="foto-card">
+                <img src="https://i.postimg.cc/J4dfSn8q/Imagem-do-Whats-App-de-2025-04-15-s-20-05-45-a4e3268c.jpg" alt="Foto 3">
+                <p>Feliz aniversario, Momo! Coloquei duas desse dia porque amei essas fotinhas.</p>
+            </div>
+            <div class="foto-card">
+                <img src="https://i.postimg.cc/WpySvJDh/Imagem-do-Whats-App-de-2025-04-15-s-20-05-46-6dcb3ca8.jpg" alt="Foto 3">
+                <p>Amo te ver se maquiando e se sentindo bem consigo mesma. Eu te acho a mulher mais linda do mundo e sou a pessoa mais feliz ao seu lado!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção de Músicas -->
+    <div class="musicas">
+        <h3>Momo, Queria te dizer que:</h3>
+        <ul>
+            <li>"Seu" - Sant</li>
+            <li>"Cheiro de Amor" - Maria Bethânia</li>
+            <li>"Ninguém vai superar" - Budah</li>
+            <li>"Pelo tempo que durar" - Marisa Monte</li>
+            <li>"Eu te amo" - Lagum</li>
+            <li>"Melhor que ontem" - Djonga</li>
+        </ul>
+    </div>
+
+    <!-- Seção de Parabéns -->
+    <div class="parabens">
+        <h3>Feliz Aniversario, Minha gatinha!💗</h3>
+        <p>Seu aniversário é hoje, mas o presente foi meu de te ver antes do planejado… Momo, infelizmente não vou estar com você hoje, mas quero passar todos os aniversários ao seu lado. 
+            No final de semana a gente se vê e comemora! Aproveite muito o seu final de semana! EU TE AMO MUITO!!💗💗</p>
+    </div>
+
+    <!-- Seção de Presentes -->
+    <div class="presente">
+        <h3>Vale Date 🎁</h3>
+        <p>No proximo final de semana que a gente estiver juntinhas, bora no cineminha? Carinho e Xeque Mate pra matar a saudade!</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 24 de Abril de 2025, Jornal do Amor - Direitos reservados à Clarisse Dalcin.</p>
+    </footer>
+
+    <script>
+        // Código para criar corações flutuantes
+        function criarCorações() {
+            const quantidade = 30;
+            const container = document.querySelector(".corações");
+
+            for (let i = 0; i < quantidade; i++) {
+                let coração = document.createElement("div");
+                coração.classList.add("coração");
+                coração.style.left = `${Math.random() * 100}%`;
+                coração.style.width = `${Math.random() * 25 + 15}px`;
+                coração.style.height = coração.style.width;
+                coração.style.animationDuration = `${Math.random() * 5 + 3}s`;
+                container.appendChild(coração);
+
+                setTimeout(() => {
+                    coração.remove();
+                }, 5000);
+            }
+        }
+
+        setInterval(criarCorações, 500);
+    </script>
+
+</body>
+</html>
